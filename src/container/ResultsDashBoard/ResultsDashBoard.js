@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
 import { setPercaentage } from '../../utilities/genericFunctions'
 import ToolBar from '../../component/ToolBar/ToolBar'
-import { getResults, serachResults } from '../../store/results'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import StudentResultsModal from '../../component/studentResultsModal/StudentResultsModal'
 import StudentResults from '../../component/studentResults/StudentResults'
+import { studentsInfo } from '../../constants/StudentsInfo'
 
 
 const ResultsDashBoard = (props) => {
+    const [results, setResults] = useState(studentsInfo)
+    const [searchString, setSearchString] = useState(null)
     const [showModal, setShowModal] = useState(false)
     const [studentData, setStudentData] = useState({})
 
     //update student results with gardes and grade color
     const updateResults = () => {
-        let updatedData = props.results.map((student) => {
+        let updatedData = results.map((student) => {
             return {
                 ...student,
                 grade: setPercaentage(student.marks).grade,
@@ -22,14 +23,6 @@ const ResultsDashBoard = (props) => {
 
             }
         })
-        // updatedData.sort((a, b) => {
-        //     console.log("a:",a,"b:",b)
-        //     var x = a.grade.toLowerCase();
-        //     var y = b.grade.toLowerCase();
-        //     if (x < y) { return -1; }
-        //     if (x > y) { return 1; }
-        //     return 0;
-        // })
 
         //Sort based on Grade and  studentnames
         updatedData.sort((a, b) => {
@@ -47,7 +40,7 @@ const ResultsDashBoard = (props) => {
             return 0;
         })
 
-        props.getResults(updatedData)
+        setResults(updatedData)
     }
 
     useEffect(() => {
@@ -56,7 +49,7 @@ const ResultsDashBoard = (props) => {
 
     const searchHandler = (e) => {
         let searchString = e.target.value.trim()
-        props.serachResults(searchString)
+        setSearchString(searchString)
     }
 
 
@@ -66,11 +59,17 @@ const ResultsDashBoard = (props) => {
     }
 
 
+    let updatedResults = results
+    if (searchString !== null && searchString !== "") {
+        let storeResults = [...results]
+        updatedResults = storeResults.filter((student) => student.studentName.toLocaleLowerCase().indexOf(searchString.toLocaleLowerCase()) > -1)
+    }
+
     return (
         <>
             <ToolBar searchHandler={searchHandler} />
             <StudentResults
-                results={props.results}
+                results={updatedResults}
                 selectStudent={(student) => selectStudent(student)}
             />
             {
@@ -80,17 +79,5 @@ const ResultsDashBoard = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        results: state.results
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getResults: (data) => dispatch(getResults(data)),
-        serachResults: (searchString) => dispatch(serachResults(searchString))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ResultsDashBoard)
+export default ResultsDashBoard
