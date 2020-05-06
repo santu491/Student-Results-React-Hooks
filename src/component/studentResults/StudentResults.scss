@@ -1,0 +1,56 @@
+
+@import'../../scss/constants';
+
+.resultTable{
+    width:80%;
+    margin: auto;
+    margin-top:3%;
+    table {
+      font-family: $fontFamily;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td {
+     border:1px solid #ddd;
+     padding-left: 8px;
+    }
+    th{
+      padding:15px 5px;
+      border:1px solid #ddd;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    td.grade{
+      text-align: center;
+      font-weight: bold;
+      
+    }
+    th.grade{
+      text-align: center;      
+    }
+    td.button{
+      text-align: center;
+      color:red;
+      cursor: pointer;
+     
+    }
+    tr:hover{
+      background-color: #ddd;
+    }
+
+}
+
+@media(max-width:499px){
+  .resultTable{
+    th.Teacher,td.Teacher{
+      display:none
+      
+    }
+  }
+}
