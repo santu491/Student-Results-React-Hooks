@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { setPercaentage } from '../../utilities/genericFunctions'
-import ToolBar from '../ToolBar/ToolBar'
+import ToolBar from '../../component/ToolBar/ToolBar'
 import { getResults, serachResults } from '../../store/results'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import StudentResultsModal from '../../component/studentResultsModal/StudentResultsModal'
