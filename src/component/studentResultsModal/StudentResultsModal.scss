@@ -1,4 +1,23 @@
 @import'../../scss/constants';
+.modalHeader{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height:40px;
+  background-color: DodgerBlue;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin:0;
+  .results{
+    text-align: center;
+    color:#bfff00;
+    font-weight: bold;
+    font-size: 17;
+    font-family: $fontFamily;
+ 
+  }
+}
+
 .modalContent{
     padding:20px 0;
     margin-left: 30px;
@@ -12,13 +31,6 @@
       border: 1px solid #dddddd;
       text-align: left;
       padding: 8px;
-    }
-    .results{
-      text-align: center;
-      color:green;
-      font-weight: bold;
-      font-size: 17;
-      font-family: $fontFamily;
     }
     .close{
       width:70px;

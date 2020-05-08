@@ -237,3 +237,45 @@ export const studentsInfo = [
     },
 
 ]
+
+export const columnDefs = [
+    {
+        headerName: "Grade", field: "grade", sortable: true, filter: true, align: 'center',
+        cellStyle: (params) => gradeStyle(params),
+        pinned: 'center',
+    },
+    { headerName: "Student Name", field: "studentName", sortable: true, filter: true, },
+    {
+        headerName: "Teacher Name", field: "classTeacher", sortable: true, filter: true,
+    },
+    {
+        headerName: "Branch", field: "branchName", sortable: true, filter: true,
+
+    },
+
+    {
+        headerName: "", field: "showDetails",
+        cellRenderer: () => {
+            return '<span><i class="fa fa-angle-right fa-lg"></i> </span>'
+        },
+        cellStyle: {
+
+            color: "red",
+            textAlign: "center",
+            cursor: "pointer"
+
+        }
+    },
+
+]
+
+export const gradeStyle = (params) => {
+    return {
+        color: params.data.color,
+        fontSize: 20,
+        paddingLeft: "40px",
+        flex: 1,
+        fontWeight: "bold"
+
+    }
+}

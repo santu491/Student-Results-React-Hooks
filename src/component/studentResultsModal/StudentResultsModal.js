@@ -5,10 +5,13 @@ import './StudentResultsModal.scss'
 const StudentResultsModal = ({ studentData, setShowModal }) => {
     return (
         <Modal>
-            <div className="modalContent">
+            < >
+                <div className="modalHeader">
                 <p className="results">Results</p>
-                <p>Name:{studentData.studentName}</p>
-                <p>Branch:{studentData.branchName}</p>
+                </div>
+                <div className="modalContent">
+                <p>Name: {studentData.studentName}</p>
+                <p>Branch: {studentData.branchName}</p>
 
                 <table>
                     <tr>
@@ -26,6 +29,7 @@ const StudentResultsModal = ({ studentData, setShowModal }) => {
                 <p>Grade: <span style={{ color: studentData.color }}>{studentData.grade}</span> </p>
                 <button className="close" onClick={setShowModal}>Close</button>
             </div>
+            </>
 
         </Modal>
 

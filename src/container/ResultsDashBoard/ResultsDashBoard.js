@@ -4,6 +4,7 @@ import ToolBar from '../../component/ToolBar/ToolBar'
 // import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import StudentResultsModal from '../../component/studentResultsModal/StudentResultsModal'
 import StudentResults from '../../component/studentResults/StudentResults'
+import StudentResultsAgGrid from '../../component/studentResults/StudentResultsAgGrid'
 import {useSearchResults} from '../../hooks/useSearchResults'
 import {useResults} from '../../hooks/useResults'
 
@@ -33,7 +34,11 @@ const ResultsDashBoard = (props) => {
     return (
         <>
             <ToolBar searchHandler={searchHandler} />
-            <StudentResults
+            {/* <StudentResults
+                results={updatedResults}
+                selectStudent={(student) => selectStudent(student)}
+            /> */}
+             <StudentResultsAgGrid
                 results={updatedResults}
                 selectStudent={(student) => selectStudent(student)}
             />
