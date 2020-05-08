@@ -42,6 +42,14 @@ export const sideBar = {
     ],
 }
 
+export const defaultColDef={
+    flex: 1, 
+    resizable: true,
+     suppressSizeToFit: true,
+    sortable: true,
+}
+
+
 export const gradeStyle = (params) => {
     return {
         color: params.data.color,
