@@ -240,30 +240,21 @@ export const studentsInfo = [
 
 export const columnDefs = [
     {
-        headerName: "Grade", field: "grade", sortable: true, filter: true, align: 'center',
+        headerName: "Grade", field: "grade", sortable: true, filter: true, align: 'center', maxWidth: 170,
         cellStyle: (params) => gradeStyle(params),
-        pinned: 'center',
     },
     { headerName: "Student Name", field: "studentName", sortable: true, filter: true, },
+    { headerName: "Teacher Name", field: "classTeacher", sortable: true, filter: true, },
+    { headerName: "Branch", field: "branchName", sortable: true, filter: true, maxWidth: 170, },
     {
-        headerName: "Teacher Name", field: "classTeacher", sortable: true, filter: true,
-    },
-    {
-        headerName: "Branch", field: "branchName", sortable: true, filter: true,
-
-    },
-
-    {
-        headerName: "", field: "showDetails",
+        headerName: "", field: "showDetails", maxWidth: 150,
         cellRenderer: () => {
             return '<span><i class="fa fa-angle-right fa-lg"></i> </span>'
         },
         cellStyle: {
-
             color: "red",
             textAlign: "center",
-            cursor: "pointer"
-
+            cursor: "pointer",
         }
     },
 
@@ -275,7 +266,8 @@ export const gradeStyle = (params) => {
         fontSize: 20,
         paddingLeft: "40px",
         flex: 1,
-        fontWeight: "bold"
+        fontWeight: "bold",
+
 
     }
 }
